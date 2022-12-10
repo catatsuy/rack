@@ -1299,6 +1299,7 @@ content-transfer-encoding: base64\r
 --AaB03x--\r
 EOF
     req = make_request Rack::MockRequest.env_for("/",
+                      "REQUEST_METHOD" => 'POST',
                       "CONTENT_TYPE" => "multipart/form-data, boundary=AaB03x",
                       "CONTENT_LENGTH" => input.size,
                       :input => input)
@@ -1403,6 +1404,7 @@ content-transfer-encoding: base64\r
 --AaB03x--\r
 EOF
     env = Rack::MockRequest.env_for("/",
+                          "REQUEST_METHOD" => 'POST',
                           "CONTENT_TYPE" => "multipart/form-data, boundary=AaB03x",
                           "CONTENT_LENGTH" => input.size,
                           :input => input)
@@ -1417,6 +1419,7 @@ EOF
 content-disposition: form-data; name="huge"; filename="huge"\r
 EOF
     req = make_request Rack::MockRequest.env_for("/",
+                      "REQUEST_METHOD" => 'POST',
                       "CONTENT_TYPE" => "multipart/form-data, boundary=AaB03x",
                       "CONTENT_LENGTH" => input.size,
                       :input => input)
